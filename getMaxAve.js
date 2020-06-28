@@ -11,7 +11,7 @@ app.route('/stuid').get(function(req, res)
         MongoClient.connect(url, function(err, db) {
             var dbo=db.db("mydb");
             var cursor = dbo.collection('students').find();
-            var query={examtaken:"2019/03"};
+            var query={examtaken:"2019/06"};
             dbo.collection("students").find(query).toArray(function(err,result){
             if (err) throw err;
             //console.log(result);
@@ -29,6 +29,7 @@ app.route('/stuid').get(function(req, res)
             // console.log(max_value)
             
             //console.log(maxlist)
+            //get the maximum average mark
             var max=maxlist[0].average_mark;
             for (i=1;i<maxlist.length;i++){
                 if (maxlist[i].average_mark>max) max=maxlist[i];
